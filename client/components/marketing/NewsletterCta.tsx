@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { FiArrowRight, FiCheck } from "react-icons/fi";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -34,7 +34,7 @@ export function NewsletterCta() {
             className={cn(buttonVariants({ variant: "accent", size: "lg" }), "group")}
           >
             Get started free
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
 
@@ -57,7 +57,7 @@ export function NewsletterCta() {
           <Button type="submit" variant="outline-invert" size="md" className="shrink-0">
             {submitted ? (
               <>
-                <Check className="h-4 w-4" /> Subscribed
+                <FiCheck className="h-4 w-4" /> Subscribed
               </>
             ) : (
               "Notify me"

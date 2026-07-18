@@ -1,7 +1,13 @@
 import Link from "next/link";
-import { Sparkles, Mail, MapPin } from "lucide-react";
+import { HiSparkles } from "react-icons/hi2";
+import {
+  FiGithub,
+  FiTwitter,
+  FiLinkedin,
+  FiMail,
+  FiMapPin,
+} from "react-icons/fi";
 import { footerLinks, siteConfig } from "@/lib/site-config";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -14,7 +20,7 @@ export function Footer() {
               className="flex items-center gap-2 font-display text-lg font-semibold"
             >
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-signal text-ink">
-                <Sparkles className="h-3.5 w-3.5" />
+                <HiSparkles className="h-3.5 w-3.5" />
               </span>
               {siteConfig.name}
             </Link>
@@ -27,11 +33,11 @@ export function Footer() {
                 href={`mailto:${siteConfig.contact.email}`}
                 className="flex items-center gap-2 hover:text-paper"
               >
-                <Mail className="h-3.5 w-3.5" />
+                <FiMail className="h-3.5 w-3.5" />
                 {siteConfig.contact.email}
               </a>
               <p className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                <FiMapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" />
                 {siteConfig.contact.address}
               </p>
             </div>
@@ -44,7 +50,7 @@ export function Footer() {
                 aria-label="GitHub"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-line-dark text-paper/70 hover:border-signal hover:text-signal"
               >
-                <FaGithub className="h-4 w-4" />
+                <FiGithub className="h-4 w-4" />
               </a>
               <a
                 href={siteConfig.social.twitter}
@@ -53,7 +59,7 @@ export function Footer() {
                 aria-label="Twitter / X"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-line-dark text-paper/70 hover:border-signal hover:text-signal"
               >
-                <FaTwitter className="h-4 w-4" />
+                <FiTwitter className="h-4 w-4" />
               </a>
               <a
                 href={siteConfig.social.linkedin}
@@ -62,7 +68,7 @@ export function Footer() {
                 aria-label="LinkedIn"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-line-dark text-paper/70 hover:border-signal hover:text-signal"
               >
-                <FaLinkedin className="h-4 w-4" />
+                <FiLinkedin className="h-4 w-4" />
               </a>
             </div>
           </div>

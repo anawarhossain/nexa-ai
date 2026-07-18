@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { FiPlus } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 
 const faqs = [
@@ -47,7 +47,7 @@ export function Faq() {
                   <span className="font-display text-base font-medium text-ink">
                     {item.q}
                   </span>
-                  <Plus
+                  <FiPlus
                     className={cn(
                       "h-4 w-4 shrink-0 text-ash-soft transition-transform duration-200",
                       isOpen && "rotate-45 text-signal"

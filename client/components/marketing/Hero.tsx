@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { FiArrowDown, FiArrowRight } from "react-icons/fi";
 import { buttonVariants } from "@/components/ui/button";
 import { AgentPipeline } from "./AgentPipeline";
 import { cn } from "@/lib/utils";
@@ -45,7 +45,7 @@ export function Hero() {
               className={cn(buttonVariants({ variant: "accent", size: "lg" }), "group")}
             >
               Try the demo
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/#how-it-works"
@@ -70,7 +70,7 @@ export function Hero() {
         aria-label="Scroll to how it works"
         className="relative mx-auto mb-8 flex h-9 w-9 items-center justify-center rounded-full border border-line-dark text-paper/50 transition-colors hover:text-signal"
       >
-        <ArrowDown className="h-4 w-4" />
+        <FiArrowDown className="h-4 w-4" />
       </Link>
     </section>
   );

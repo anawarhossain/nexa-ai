@@ -1,23 +1,24 @@
-import { LayoutTemplate, SlidersHorizontal, RefreshCw, History } from "lucide-react";
+import { FiLayout, FiSliders, FiRefreshCw } from "react-icons/fi";
+import { MdHistory } from "react-icons/md";
 
 const capabilities = [
   {
-    icon: LayoutTemplate,
+    icon: FiLayout,
     title: "Custom prompt templates",
     body: "Four content types — blog, product description, documentation, social post — each with its own tuned template.",
   },
   {
-    icon: SlidersHorizontal,
+    icon: FiSliders,
     title: "Adjustable output length",
     body: "Short, medium, or long — set it once per request, no re-explaining what you want.",
   },
   {
-    icon: RefreshCw,
+    icon: FiRefreshCw,
     title: "One-click regenerate",
     body: "Not quite right? Regenerate with the same brief and a different pass, without losing your inputs.",
   },
   {
-    icon: History,
+    icon: MdHistory,
     title: "Full generation history",
     body: "Every output is saved and searchable, so you can revisit or reuse past generations anytime.",
   },

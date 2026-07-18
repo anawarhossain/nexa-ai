@@ -1,17 +1,11 @@
 import Link from "next/link";
-import {
-  PenLine,
-  Briefcase,
-  HeartPulse,
-  Compass,
-  GraduationCap,
-  ArrowRight,
-} from "lucide-react";
+import { FiEdit3, FiBriefcase, FiCompass, FiArrowRight } from "react-icons/fi";
+import { FaHeartPulse, FaGraduationCap } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 
 const modules = [
   {
-    icon: PenLine,
+    icon: FiEdit3,
     name: "Content Generator",
     status: "live" as const,
     description:
@@ -19,25 +13,25 @@ const modules = [
     href: "/dashboard/content-generator",
   },
   {
-    icon: Briefcase,
+    icon: FiBriefcase,
     name: "Career Coach",
     status: "soon" as const,
     description: "Resume feedback, interview prep, and role-fit analysis driven by the same agent core.",
   },
   {
-    icon: HeartPulse,
+    icon: FaHeartPulse,
     name: "Health Companion",
     status: "soon" as const,
     description: "Daily check-ins and habit tracking with agent-generated, context-aware guidance.",
   },
   {
-    icon: Compass,
+    icon: FiCompass,
     name: "Travel Planner",
     status: "soon" as const,
     description: "Multi-day itineraries built step by step from your budget, dates, and interests.",
   },
   {
-    icon: GraduationCap,
+    icon: FaGraduationCap,
     name: "Learning Assistant",
     status: "soon" as const,
     description: "Structured study plans and spaced-repetition review, generated per topic.",
@@ -107,7 +101,7 @@ export function ModulesShowcase() {
                     href={mod.href}
                     className="mt-6 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-signal hover:gap-2.5 transition-all"
                   >
-                    Open module <ArrowRight className="h-3.5 w-3.5" />
+                    Open module <FiArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 )}
               </div>
