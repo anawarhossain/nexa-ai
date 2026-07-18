@@ -9,9 +9,13 @@ export function GoogleButton({ label = "Continue with Google" }: { label?: strin
 
   async function handleGoogleSignIn() {
     setIsLoading(true);
+    // callbackURL অবশ্যই full absolute URL হতে হবে (frontend origin সহ)।
+    // relative "/dashboard" দিলে Better Auth সেটাকে backend এর URL
+    // (localhost:5000/dashboard) হিসেবে ধরে নেয় — যেটা ভুল।
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/dashboard",
+      callbackURL: `${appUrl}/dashboard`,
     });
     // সফল হলে Google এ রিডাইরেক্ট হয়ে যাবে, তাই setIsLoading(false) এখানে
     // দরকার নেই — শুধু ব্যর্থ হলে ইউজার ফিরে আসবে, তখন বাটন আবার সক্রিয় থাকবে।
