@@ -108,7 +108,7 @@ export async function run(input: AgentInput): Promise<AgentResult> {
   // ── Step 3: Call AI ──────────────────────────────────────────────────────
   steps.push({
     label: "Calling AI model",
-    detail: `Gemini 1.5 Flash | temperature=${temperature}`,
+    detail: `Gemini 3.5 Flash | temperature=${temperature}`,
   });
 
   const provider = getGeminiProvider();

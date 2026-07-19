@@ -1,10 +1,29 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI, GoogleGenerativeAIFetchError, GoogleGenerativeAIRequestInputError } from "@google/generative-ai";
 import type { AIProvider, AIResponse, GenerateOptions } from "./provider.interface";
 import { env } from "../../core/config/env";
 
+const MAX_RETRIES = 3;
+const INITIAL_BACKOFF_MS = 3_000;
+const REQUEST_TIMEOUT_MS = 30_000;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function isRetryable(err: unknown): boolean {
+  if (err instanceof GoogleGenerativeAIFetchError) {
+    const status = err.status ?? 0;
+    return status === 429 || status >= 500;
+  }
+  if (err instanceof GoogleGenerativeAIRequestInputError) {
+    return false;
+  }
+  return true;
+}
+
 export class GeminiProvider implements AIProvider {
   readonly name = "gemini";
-  readonly defaultModel = "gemini-2.0-flash";
+  readonly defaultModel = "gemini-3.5-flash";
 
   private readonly client: GoogleGenerativeAI;
 
@@ -18,27 +37,46 @@ export class GeminiProvider implements AIProvider {
   async generate(prompt: string, options: GenerateOptions = {}): Promise<AIResponse> {
     const { temperature = 0.7, maxTokens = 4096 } = options;
 
-    const model = this.client.getGenerativeModel({
-      model: this.defaultModel,
-      generationConfig: {
-        temperature,
-        maxOutputTokens: maxTokens,
+    const model = this.client.getGenerativeModel(
+      {
+        model: this.defaultModel,
+        generationConfig: {
+          temperature,
+          maxOutputTokens: maxTokens,
+        },
       },
-    });
+      { timeout: REQUEST_TIMEOUT_MS },
+    );
 
-    const result = await model.generateContent(prompt);
-    const text = result.response.text();
-    const wordCount = text
-      .trim()
-      .split(/\s+/)
-      .filter((w) => w.length > 0).length;
+    let lastError: unknown;
 
-    return {
-      text,
-      wordCount,
-      provider: this.name,
-      model: this.defaultModel,
-    };
+    for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+      if (attempt > 0) {
+        const backoff = INITIAL_BACKOFF_MS * Math.pow(2, attempt - 1);
+        await sleep(backoff);
+      }
+
+      try {
+        const result = await model.generateContent(prompt);
+        const text = result.response.text();
+        const wordCount = text
+          .trim()
+          .split(/\s+/)
+          .filter((w) => w.length > 0).length;
+
+        return {
+          text,
+          wordCount,
+          provider: this.name,
+          model: this.defaultModel,
+        };
+      } catch (err) {
+        if (!isRetryable(err)) throw err;
+        lastError = err;
+      }
+    }
+
+    throw lastError;
   }
 }
 
