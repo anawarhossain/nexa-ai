@@ -28,8 +28,12 @@ export function createApp(): Application {
   app.use(cookieParser());
   app.use(sanitizeBody); // global XSS sanitizer
 
+  // app.get("/api/health", (req, res) => {
+  //   res.json({ success: true, message: "Nexa AI server is running." });
+  // });
+
   app.get("/api/health", (req, res) => {
-    res.json({ success: true, message: "Nexa AI server is running." });
+    res.status(200).json({ status: "ok", time: new Date().toISOString() });
   });
 
   // Module routes
