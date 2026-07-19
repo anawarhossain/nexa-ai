@@ -1,16 +1,25 @@
 import type { NextConfig } from "next";
 
+const API_SERVER = process.env.API_SERVER_URL || "http://localhost:5000";
+
 const nextConfig: NextConfig = {
-  /* config options here */
-    images: {
+  images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "*", // Allows any domain
+        hostname: "*",
         port: "",
-        pathname: "/**", // Allows any path inside that domain
+        pathname: "/**",
       },
     ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${API_SERVER}/api/:path*`,
+      },
+    ];
   },
 };
 

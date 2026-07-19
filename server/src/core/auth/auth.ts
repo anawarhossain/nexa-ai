@@ -39,7 +39,7 @@ export function initAuth() {
 
     advanced: {
       defaultCookieAttributes: {
-        sameSite: isProd ? "none" : "lax",
+        sameSite: "lax",
         secure: isProd,
       },
     },

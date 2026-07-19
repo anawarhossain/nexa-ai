@@ -2,12 +2,13 @@ import axios from "axios";
 
 /**
  * Shared Axios instance — সব API call এর জন্য।
- * withCredentials: true দেওয়া আছে তাই Better Auth এর session cookie
- * প্রতিটা request এ পাঠানো হবে।
+ * Dev এ NEXT_PUBLIC_API_URL সেট থাকলে cross‑origin CORS request,
+ * production এ খালি → same‑origin (Next.js rewrites proxy করে)।
  */
+const apiBase = process.env.NEXT_PUBLIC_API_URL || "";
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  withCredentials: true,
+  baseURL: apiBase,
+  withCredentials: !apiBase,
   headers: { "Content-Type": "application/json" },
 });
 

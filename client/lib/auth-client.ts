@@ -1,14 +1,16 @@
 import { createAuthClient } from "better-auth/react";
 
 /**
- * NEXT_PUBLIC_API_URL হলো server.ts যেখানে চলছে সেই origin
- * (যেমন dev এ http://localhost:5000)। createAuthClient নিজে থেকেই
- * প্রতিটা fetch এ credentials: "include" পাঠায়, তাই cross-origin
- * cookie ঠিকমতো সেট/পড়া হবে — যতক্ষণ server এর CORS এ credentials:true
- * আর trustedOrigins এ এই frontend এর URL থাকে (আমরা Phase 1 এ এটা করেছি)।
+ * baseURL খালি রাখা হয়েছে কারণ Next.js rewrites /api/* কে
+ * server এ proxy করে। ফলে browser same-origin request দেখে
+ * এবং cookie ঠিকমতো কাজ করে (InPrivate/incognito windows সহ)।
+ * Dev এ .env.local এ NEXT_PUBLIC_API_URL সেট করা থাকলে সেটা
+ * সরাসরি server‑এ request যাবে (CORS‑এর মাধ্যমে)।
  */
+const baseURL = process.env.NEXT_PUBLIC_API_URL || "";
+
 export const authClient = createAuthClient({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL,
 });
 
 export const { useSession, signIn, signUp, signOut } = authClient;
