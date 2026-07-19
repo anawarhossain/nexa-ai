@@ -46,3 +46,5 @@
 **/*.tsbuildinfo
 **/next-env.d.ts
 /plan.md
+
+.vercel
