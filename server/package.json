@@ -8,6 +8,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "seed:demo": "tsx src/scripts/seed-demo-user.ts",
+    "seed:items": "tsx src/scripts/seed-items.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "better-auth": "^1.6.23",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",

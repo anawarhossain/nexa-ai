@@ -24,10 +24,43 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://nexa-ai.example.com";
+
 export const metadata: Metadata = {
-  title: "Nexa AI — The agentic AI platform",
+  metadataBase: new URL(APP_URL),
+  title: {
+    default: "Nexa AI — The agentic AI platform",
+    template: "%s — Nexa AI",
+  },
   description:
     "Deploy AI agents that plan, draft, and refine work on their own — starting with content, expanding to your whole workflow.",
+  keywords: [
+    "AI content generator",
+    "agentic AI",
+    "prompt engineering",
+    "AI writing tool",
+    "Gemini AI",
+    "content automation",
+  ],
+  authors: [{ name: "Nexa AI", url: APP_URL }],
+  creator: "Nexa AI",
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: APP_URL,
+    siteName: "Nexa AI",
+    title: "Nexa AI — The agentic AI platform",
+    description:
+      "Deploy AI agents that plan, draft, and refine work on their own — starting with content, expanding to your whole workflow.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nexa AI — The agentic AI platform",
+    description:
+      "Deploy AI agents that plan, draft, and refine work on their own.",
+    creator: "@nexaai",
+  },
 };
 
 export default function RootLayout({

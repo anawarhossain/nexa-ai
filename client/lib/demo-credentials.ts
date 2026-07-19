@@ -4,6 +4,6 @@
  * (দেখুন server/src/scripts/seed-demo-user.ts)
  */
 export const DEMO_CREDENTIALS = {
-  email: "demo@nexa.com",
-  password: "Demo#12345",
+  email: "demo@nexa-ai.example.com",
+  password: "Demo@12345",
 };
