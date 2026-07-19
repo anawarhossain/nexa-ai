@@ -7,9 +7,9 @@ export async function connectDB(): Promise<typeof mongoose> {
   if (isConnected) return mongoose;
 
   try {
-    await mongoose.connect(env.MONGO_URI);
+    await mongoose.connect(env.MONGO_URI, { dbName: env.DATABASE_NAME });
     isConnected = true;
-    console.log(`✅ MongoDB connected: ${mongoose.connection.host}/${mongoose.connection.name}`);
+    console.log(`✅ MongoDB connected: ${mongoose.connection.host}/${env.DATABASE_NAME}`);
     return mongoose;
   } catch (error) {
     console.error("❌ MongoDB connection failed:", error);

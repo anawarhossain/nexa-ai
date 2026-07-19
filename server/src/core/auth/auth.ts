@@ -14,7 +14,7 @@ export function initAuth() {
   const client = getMongoClient();
 
   auth = betterAuth({
-    database: mongodbAdapter(client.db(process.env.DATABASE_NAME) as any, {
+    database: mongodbAdapter(client.db(env.DATABASE_NAME) as any, {
       client: client as any,
     }),
 

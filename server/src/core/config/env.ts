@@ -25,6 +25,8 @@ export const env = {
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || "",
 
   GEMINI_API_KEY: process.env.GEMINI_API_KEY || "",
+
+  DATABASE_NAME: process.env.DATABASE_NAME || "nexa-ai",
 };
 
 export const isProd = env.NODE_ENV === "production";
