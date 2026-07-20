@@ -457,5 +457,5 @@ This project is for demonstration and educational purposes.
 ## Project Screenshot
 
 <p align="center">
-  <img src="public/preview.png" alt="Project Preview" width=" ">
+  <img src="client/public/preview.png" alt="Project Preview" width=" ">
 </p>
