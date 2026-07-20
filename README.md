@@ -438,3 +438,24 @@ The Express app is wrapped as a Vercel serverless function via `server/api/index
 ## License
 
 This project is for demonstration and educational purposes.
+
+
+## 👨‍💻 Author
+**Md Anawar Hossain**
+- **GitHub:** [@anawarhossain](https://github.com/anawarhossain)
+- **Facebook:** [Anawar Hossain](https://web.facebook.com/AnawarHossain55)
+- **LinkeIn:** [Anawar Hossain](https://www.linkedin.com/in/anawarhossain/)
+- **X(Twitter):** [Anawar Hossain](https://x.com/MDANAWAR22)
+- **WhatsApp:** [Anawar Hossain](https://wa.me/+8801701020694)
+- **Role:** Junior Developer
+
+
+## Live Link
+
+- [Live Link](https://anawarhossain-nexa-ai.vercel.app/)
+
+## Project Screenshot
+
+<p align="center">
+  <img src="public/preview.png" alt="Project Preview" width=" ">
+</p>
